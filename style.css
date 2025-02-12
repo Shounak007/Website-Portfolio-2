@@ -50,7 +50,6 @@ body {
   font-size: 1.8rem;
   font-weight: bold;
   color: #80bfff;
-  /* Softer, less bright color for your name */
   text-decoration: none;
 }
 
@@ -76,7 +75,6 @@ body {
   height: 2px;
   background: #ff9100;
   transition: width 0.5s ease-in-out;
-  /* Smoother, slower transition */
 }
 
 .nav-link:hover::after {
@@ -93,7 +91,6 @@ body {
   width: 0%;
   height: 4px;
   background: #80bfff;
-  /* Updated to a less harsh, softer blue */
   z-index: 1001;
 }
 
@@ -102,35 +99,39 @@ body {
    ===================================== */
 .hero {
   position: relative;
-  height: 100vh;
+  height: auto;
+  /* Adjusted to fit content */
   background: url('img/header-bg.jpg') center/cover no-repeat;
-  margin-top: 60px;
+  margin-top: 120px;
+  /* Increased space between navbar and hero */
 }
 
 .hero-overlay {
   background: rgba(0, 0, 0, 0.7);
-  height: 100%;
   width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   padding: 20px;
+  display: flex;
+  /* Use flexbox for layout */
+  align-items: flex-start;
+  /* Align items at the top */
+  justify-content: center;
+  /* Center content horizontally */
+  text-align: center;
+  flex-wrap: wrap;
+  /* Allow wrapping of content */
 }
 
 .hero-logo {
-  width: 400px;
-  /* Increased size */
-  height: 400px;
-  /* Increased size */
+  width: 300px;
+  /* Reduced size for better wrapping */
+  height: 300px;
   border-radius: 50%;
   border: 4px solid #80bfff;
-  /* You can adjust the border color if needed */
-  margin-bottom: 20px;
+  margin: 20px;
+  /* Add spacing around the logo */
   animation: zoomIn 1s ease-out;
-  /* New zoomIn animation */
+  flex-shrink: 0;
+  /* Prevent the image from shrinking */
 }
 
 /* New keyframes for zoomIn animation */
@@ -145,80 +146,40 @@ body {
     opacity: 1;
   }
 }
+
+/* Adjusted Hero Text Positioning (Wrap Around Profile Picture) */
 .hero-text {
-  position: absolute;
-  top: 40%;
-  /* Still positioned higher on the screen */
-  left: 5%;
-  /* 5% from the left edge */
-  transform: translateY(-50%);
+  max-width: 50%;
+  /* Limit text width to allow wrapping */
+  margin: 20px;
+  /* Add spacing around the text */
   text-align: left;
-  opacity: 0;
-  animation: fadeInLeft 1s forwards;
-  animation-delay: 0.3s;
+  /* Align text to the left */
+  color: #e0e0e0;
+  font-size: 1.4rem;
+  /* Smaller font size for readability */
+  line-height: 1.6;
+  /* Improved line spacing */
 }
 
-.hero-text h1 {
-  font-size: 3.2rem;
-  /* Slightly smaller than before */
-  transition: transform 0.3s ease, color 0.3s ease;
+.hero-text .single-line {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #80bfff;
+  white-space: normal;
+  /* Allow text to wrap */
+  overflow: visible;
+  /* Ensure no hidden overflow */
+  text-shadow: 0 2px 10px rgba(128, 191, 255, 0.5);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.hero-text h3 {
-  font-size: 1.8rem;
-  /* Slightly smaller than before */
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Keyframes for fading in from the left */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translate(-50px, -50%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(0, -50%);
-  }
-}
-
-/* Hover effect for a creative interaction */
-.hero-text:hover h1,
-.hero-text:hover h3 {
-  transform: scale(1.05);
+/* Hover effect for creative interaction */
+.hero-text:hover .single-line {
   color: #ff9100;
-}
-/* Bright Red Down Arrow */
-.down-arrow {
-  position: absolute;
-  bottom: 150px;
-  /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ff6666;
-  /* Lighter red */
-  font-size: 5rem;
-  /* Bigger arrow */
-  width: 90px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  /* Center vertically */
-  justify-content: center;
-  /* Center horizontally */
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  /* Perfect circle */
-  box-shadow: 0 2px 6px rgba(255, 102, 102, 0.5);
-  animation: bounce 2s infinite;
+  text-shadow: 0 4px 20px rgba(255, 145, 0, 0.8);
 }
 
-/* Fine-tune the arrow's vertical alignment */
-.down-arrow {
-  transform: translateY(10%);
-  /* Adjust this value to fine-tune alignment */
-}
 /* =====================================
    Sections & Headings
    ===================================== */
@@ -371,7 +332,6 @@ h2::after {
 
 .candle {
   position: relative;
-  /* Enable absolute positioning for sparks */
   width: 20px;
   height: 80px;
   background-color: #fff;
@@ -396,7 +356,6 @@ h2::after {
 .spark {
   position: absolute;
   bottom: 100%;
-  /* start at the top of the candle */
   width: 6px;
   height: 6px;
   background: radial-gradient(circle, #ffcc00 0%, #ff6600 60%, transparent 70%);
@@ -533,17 +492,147 @@ h2::after {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-
 /* For dark mode: images get a white background */
 @media (prefers-color-scheme: dark) {
   .card-image img {
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff;
   }
 }
 
 /* For light mode: images get a dark background */
 @media (prefers-color-scheme: light) {
   .card-image img {
-    background-color: #1e1e1e; /* Dark background */
+    background-color: #1e1e1e;
   }
+}
+
+/* =====================================
+   Mobile Responsive Adjustments
+   ===================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 10px 80px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .hero-logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text {
+    top: 35%;
+    left: 0%;
+    transform: translateY(-50%);
+    max-width: 250px;
+    /* Optionally reduce max-width further on mobile */
+  }
+
+  .down-arrow {
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
+    bottom: 100px;
+  }
+
+  .fixed-bottom-bar {
+    width: 90%;
+    padding: 8px 10px;
+  }
+
+  .bottom-link {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Additional tweaks for very small screens */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+    /* =====================================
+     Hero Text Hover Magnification Effect
+     ===================================== */
+    .hero-text .single-line {
+      font-size: 1.6rem;
+      /* Base font size */
+      font-weight: bold;
+      color: #80bfff;
+      white-space: nowrap;
+      /* Prevent text from wrapping */
+      overflow: hidden;
+      /* Hide overflow */
+      text-overflow: ellipsis;
+      /* Add ellipsis for long text */
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+      text-shadow: 0 2px 10px rgba(128, 191, 255, 0.5);
+      position: relative;
+      /* Required for pseudo-element positioning */
+    }
+  
+    /* Hover Effect: Magnify Entire Text */
+    .hero-text:hover .single-line {
+      transform: scale(1.2);
+      /* Slightly magnify the text */
+      color: #ff9100;
+      /* Change color on hover */
+      text-shadow: 0 4px 20px rgba(255, 145, 0, 0.8);
+      /* Enhanced glow */
+    }
+  
+    /* Optional: Letter-by-Letter Hover Effect Using Pseudo-Elements */
+    .hero-text .single-line span {
+      display: inline-block;
+      /* Treat each letter as an individual element */
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+  
+    .hero-text .single-line span:hover {
+      transform: scale(1.5);
+      /* Magnify individual letters */
+      color: #ffcc00;
+      /* Change color for hovered letter */
+      text-shadow: 0 4px 10px rgba(255, 204, 0, 0.8);
+      /* Glow effect */
+    }
+
 }
