@@ -14,40 +14,61 @@
   <meta property="og:image" content="http://www.shounak001003.com/img/logo.png" />
   <meta property="og:site_name" content="shounak001003.com" />
 
+  <!-- SEO Enhancements -->
+  <meta name="description"
+    content="Explore the portfolio of Shounak Mukherjee, showcasing personal projects in programming, data analysis, and more." />
+  <meta name="keywords" content="Shounak Mukherjee, portfolio, programming, data analysis, Python, C, MATLAB" />
+  <meta name="author" content="Shounak Mukherjee" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="img/favicon.png" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shounak Mukherjee",
+      "url": "http://www.shounak001003.com",
+      "image": "http://www.shounak001003.com/img/logo.png",
+      "jobTitle": "Software Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Independent"
+      }
+    }
+  </script>
 </head>
 
 <body id="home">
   <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="nav-container">
+  <header class="navbar">
+    <nav class="nav-container">
       <a href="#home" class="nav-logo">Shounak</a>
       <ul class="nav-menu">
         <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
         <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <!-- Scroll Progress Bar -->
   <div id="progressBar"></div>
 
   <!-- Hero Section -->
-  <header class="hero">
+  <section class="hero">
     <div class="hero-overlay">
-      <img class="hero-logo" src="img/logo.png" alt="Logo" />
+      <img class="hero-logo" src="img/logo.png" alt="Shounak Mukherjee's Profile Picture" />
       <div class="hero-text animate-on-scroll">
-        <br><br>
-        <h1>I am Shounak Mukherjee</h1>
+        <h1>I am <span class="single-line">Shounak Mukherjee</span></h1>
         <h3>Here are some projects I have worked on...</h3>
       </div>
     </div>
-  </header>
+  </section>
 
   <!-- Main Content -->
   <main class="container">
@@ -148,8 +169,7 @@
           </div>
         </a>
         <!-- Project 8 -->
-        <a href="https://github.com/Shounak007/Gaussian-Mixture-Model-with-K-means-Analysis"
-          class="card animate-on-scroll">
+        <a href="https://github.com/Shounak007/Gaussian-Mixture-Model-with-K-means-Analysis" class="card animate-on-scroll">
           <div class="card-image">
             <img src="img/card9.png" alt="Gaussian Mixture Model with K Means Analysis" />
           </div>
@@ -167,7 +187,7 @@
     <!-- Resume Section -->
     <section id="resume" class="resume animate-on-scroll">
       <h2>Resume</h2>
-      <button id="resumeButton" onclick="window.location.href='resume.pdf'">
+      <button id="resumeButton" onclick="handleResumeClick()">
         View my Resume
       </button>
     </section>
@@ -204,7 +224,74 @@
   </div>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Handle resume button click with error handling
+    function handleResumeClick() {
+      const resumeUrl = 'resume.pdf';
+      fetch(resumeUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Resume not found');
+          }
+          window.location.href = resumeUrl;
+        })
+        .catch(() => {
+          alert('The resume could not be loaded. Please try again later.');
+        });
+    }
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = `${scrolled}%`;
+    });
+
+    // Animate elements on scroll
+    document.addEventListener('scroll', () => {
+      const cards = document.querySelectorAll('.card.animate-on-scroll');
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (cardTop < windowHeight * 0.8) {
+          card.classList.add('animate');
+        }
+      });
+
+      const sections = document.querySelectorAll('.animate-on-scroll');
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.8) {
+          section.classList.add('animate');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
