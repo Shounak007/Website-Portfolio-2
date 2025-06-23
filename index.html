@@ -49,6 +49,7 @@
     <nav class="nav-container">
       <a href="#home" class="nav-logo">Shounak</a>
       <ul class="nav-menu">
+        <li class="nav-item"><a href="#fullstack" class="nav-link">Fullstack</a></li>
         <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
         <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -72,27 +73,60 @@
 
   <!-- Main Content -->
   <main class="container">
+    <!-- Fullstack Projects Section -->
+    <section id="fullstack" class="fullstack animate-on-scroll">
+      <h2>Fullstack Projects</h2>
+      <div class="fullstack-grid">
+        <!-- Sports Betting Bot -->
+        <a href="https://sports-betting-bot-5991.onrender.com" class="fullstack-card animate-on-scroll" target="_blank">
+          <div class="fullstack-card-content">
+            <div class="fullstack-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9L8.91 8.26L12 2Z" 
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="fullstack-title">Sports Betting Calculation Bot</h3>
+            <p class="fullstack-description">
+              A comprehensive fullstack application that calculates optimal betting strategies and odds analysis for sports betting. 
+              Features real-time data processing and interactive visualizations.
+            </p>
+            <div class="fullstack-tech-stack">
+              <span class="tech-tag">Fullstack Application</span>
+              <span class="tech-tag">Created: June 22, 2025</span>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Mandelbrot Set Explorer -->
+        <a href="https://shounakmandelbrot.netlify.app" class="fullstack-card animate-on-scroll" target="_blank">
+          <div class="fullstack-card-content">
+            <div class="fullstack-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" 
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="fullstack-title">Interactive Mandelbrot Set Explorer</h3>
+            <p class="fullstack-description">
+              An interactive web application exploring the Mandelbrot and Julia sets. Features real-time visualization, 
+              zooming capabilities, and customizable color schemes for mathematical exploration.
+            </p>
+            <div class="fullstack-tech-stack">
+              <span class="tech-tag">Web Application</span>
+              <span class="tech-tag">Created: November 2024</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="projects">
       <h2>Personal Projects</h2>
       <div class="grid">
         
- 
         <!-- Project 1 -->
-        <a href="https://shounakmandelbrot.netlify.app" class="card animate-on-scroll">
-          <div class="card-image">
-            <img src="img/card10.jpg" alt="Minesweeper Clone" />
-          </div>
-          <div class="card-content">
-            <span class="card-tag">(Javascript)</span>
-            <h3 class="card-title">Interactive Mandelbrot Set Explorer</h3>
-            <p class="card-description">
-              An interactive web application exploring the Mandelbrot and Julia sets. Features real-time visualization, zooming, and color scheme customization. a
-            </p>
-          </div>
-        </a>
-
-        <!-- Project 2 -->
         <a href="https://github.com/Shounak007/Minesweeper-Clone" class="card animate-on-scroll">
           <div class="card-image">
             <img src="img/card1.jpg" alt="Minesweeper Clone" />
@@ -235,9 +269,10 @@
   <!-- Fixed Permanent Bottom Bar (smaller width with numbers) -->
   <div class="fixed-bottom-bar">
     <a href="#home" class="bottom-link">1</a>
-    <a href="#projects" class="bottom-link">2</a>
-    <a href="#resume" class="bottom-link">3</a>
-    <a href="#about" class="bottom-link">4</a>
+    <a href="#fullstack" class="bottom-link">2</a>
+    <a href="#projects" class="bottom-link">3</a>
+    <a href="#resume" class="bottom-link">4</a>
+    <a href="#about" class="bottom-link">5</a>
   </div>
 
   <!-- JavaScript -->
@@ -254,19 +289,9 @@
       });
     });
 
-    // Handle resume button click with error handling
+    // Handle resume button click
     function handleResumeClick() {
-      const resumeUrl = 'resume.pdf';
-      fetch(resumeUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Resume not found');
-          }
-          window.location.href = resumeUrl;
-        })
-        .catch(() => {
-          alert('The resume could not be loaded. Please try again later.');
-        });
+      window.open('ShounakMukherjee.pdf', '_blank');
     }
 
     // Scroll progress bar

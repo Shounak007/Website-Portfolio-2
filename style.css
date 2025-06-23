@@ -378,7 +378,7 @@ h2::after {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 25%;
+  width: 35%;
   background-color: #333;
   padding: 10px 20px;
   border-radius: 10px;
@@ -544,9 +544,16 @@ h2::after {
     padding: 8px 12px;
     font-size: 0.9rem;
   }
+
+  .fullstack-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fullstack-card {
+    padding: 30px 20px;
+  }
 }
 
-/* Additional tweaks for very small screens */
 @media (max-width: 480px) {
   .hero-text h1 {
     font-size: 1.8rem;
@@ -571,7 +578,19 @@ h2::after {
   .card-description {
     font-size: 0.9rem;
   }
-    
+  
+  .fullstack-title {
+    font-size: 1.5rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .fullstack-tech-stack {
+    gap: 10px;
+  }
 }
 
 /* Reset for the about section */
@@ -680,5 +699,159 @@ h2::after {
 
   100% {
     box-shadow: 0 0 20px #00bcd4, 0 0 30px #00bcd4, 0 0 50px #00bcd4;
+  }
+}
+
+/* =====================================
+   Fullstack Projects Section
+   ===================================== */
+.fullstack {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  margin-bottom: 80px;
+}
+
+.fullstack.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fullstack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.fullstack-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fullstack-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fullstack-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.fullstack-card:hover::before {
+  left: 100%;
+}
+
+.fullstack-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: #80bfff;
+  box-shadow: 0 20px 40px rgba(128, 191, 255, 0.3);
+}
+
+.fullstack-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fullstack-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  background: linear-gradient(135deg, #80bfff, #ff9100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.fullstack-icon svg {
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+}
+
+.fullstack-title {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #80bfff, #ff9100);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fullstack-description {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fullstack-tech-stack {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.tech-tag {
+  background: rgba(128, 191, 255, 0.1);
+  color: #80bfff;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  border: 1px solid #80bfff;
+  transition: all 0.3s ease;
+}
+
+.fullstack-card:hover .tech-tag {
+  background: #80bfff;
+  color: #121212;
+  transform: translateY(-2px);
+}
+
+/* Add shine effect */
+.fullstack-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  transform: rotate(45deg);
+  animation: rotate-shine 15s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes rotate-shine {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
